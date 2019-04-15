@@ -54,24 +54,61 @@ void	print_square(t_fdf *fdf)
 	}
 }
 
+
+
 int		main(int ac, char **av)
 {
 	t_fdf	*fdf;
-	t_point	start;
-	t_point	end;
+	t_p2d	start;
+	t_p2d	end;
+	t_p2d	**tab;
+	int		x;
+	int		y;
 	
-	if (ac != 5)
-		return (0);
 	if (!(fdf = (t_fdf *)malloc(sizeof(t_fdf))))
 		return (0);
 	fdf->size = 10;
 	fdf->mlx = mlx_init();
 	fdf->wind = mlx_new_window(fdf->mlx, 700, 700, "testing");
-	start.x = ft_atoi(av[1]);
-	start.y = ft_atoi(av[2]);
-	end.x = ft_atoi(av[3]);
-	end.y = ft_atoi(av[4]);
-	draw_line(&start, &end, fdf);
+
+
+	if (ac == 1)
+	{
+		if (!(tab = (t_p2d **)malloc(sizeof(t_p2d *) * 10)))
+			return (0);
+		y = 0;
+		while (y < 10)
+		{
+			if (!(tab[y] = (t_p2d *)malloc(sizeof(t_p2d) * 10)))
+				return (0);
+			x = 0;
+			while (x < 10)
+			{
+				tab[y][x].x = 20 * (x - y) + 250;
+				tab[y][x].y = 20 * y + 100;
+				++x;
+			}
+			++y;
+		}
+		print_grid(tab, fdf);
+	}
+	else if (ac == 7)
+	{
+		start.x = ft_atoi(av[1]);
+		start.y = ft_atoi(av[2]);
+		end.x = ft_atoi(av[3]);
+		end.y = ft_atoi(av[4]);
+		draw_line(start, end, fdf);	
+		start.x = ft_atoi(av[5]);
+		start.y = ft_atoi(av[6]);
+		draw_line(start, end, fdf);
+	}	
+
+
+
+
+
+
 
 //	mlx_key_hook(fdf->wind, zoom, fdf);
 	
