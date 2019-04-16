@@ -64,6 +64,7 @@ int		main(int ac, char **av)
 	t_p2d	**tab;
 	int		x;
 	int		y;
+	int		fd;
 	
 	if (!(fdf = (t_fdf *)malloc(sizeof(t_fdf))))
 		return (0);
@@ -91,6 +92,12 @@ int		main(int ac, char **av)
 			++y;
 		}
 		print_grid(tab, fdf);
+	}
+	else if (ac == 2)
+	{
+		fd = open(av[1], O_RDONLY);
+		
+
 	}
 	else if (ac == 7)
 	{
