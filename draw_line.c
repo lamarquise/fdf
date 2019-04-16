@@ -6,11 +6,16 @@
 /*   By: erlazo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 17:44:33 by erlazo            #+#    #+#             */
-/*   Updated: 2019/04/15 18:35:30 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/04/16 14:17:10 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+
+
+		// Use the Xialin Wu methode later...
+
 
 int		draw_line(t_p2d s, t_p2d e, t_fdf *fdf)			// clearly this shit needs to be shorter or many funcs but for now it work... also manage colors?
 {																	// call another func to manage colors ???

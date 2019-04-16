@@ -6,7 +6,7 @@
 /*   By: erlazo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 17:44:21 by erlazo            #+#    #+#             */
-/*   Updated: 2019/04/15 18:50:07 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/04/16 14:17:08 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 # include <math.h>
 # include "mlx.h"
 # include "libft.h"
+
+
+typedef struct	s_pixel				// basically as fast to send values as it is to send pointer...
+{
+	int		x;
+	int		y;
+	int		color;
+}				t_pixel;
 
 typedef struct	s_p2d
 {
