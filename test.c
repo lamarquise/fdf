@@ -70,8 +70,9 @@ int		main(int ac, char **av)
 		return (0);
 	fdf->size = 10;
 	fdf->mlx = mlx_init();
-	fdf->wind = mlx_new_window(fdf->mlx, 700, 700, "testing");
-
+	fdf->wind = mlx_new_window(fdf->mlx, 1000, 1000, "testing");
+	fdf->win_len = 1000;
+	fdf->win_lon = 1000;
 
 	if (ac == 1)
 	{
@@ -96,8 +97,8 @@ int		main(int ac, char **av)
 	else if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
-		
-
+		print_grid(project(parse_map(fd, fdf), fdf), fdf);
+		close(fd);
 	}
 	else if (ac == 7)
 	{
@@ -110,11 +111,6 @@ int		main(int ac, char **av)
 		start.y = ft_atoi(av[6]);
 		draw_line(start, end, fdf);
 	}	
-
-
-
-
-
 
 
 //	mlx_key_hook(fdf->wind, zoom, fdf);

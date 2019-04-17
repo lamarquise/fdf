@@ -13,41 +13,7 @@
 #include "fdf.h"
 
 
-/*		// shit can't actually test this...
-
-int		print_3_grid(t_p3d **tab, t_fdf *fdf)			// only works with rectangles
-{
-	int		x;
-	int		y;
-	int		a;
-	int		b
-
-	y = 0;
-	while (tab[y])
-	{
-		x = 0;
-		while (tab[y][x + 1])
-		{
-			draw_line(tab[y][x], tab[y][x + 1], fdf);
-			++x;
-		}
-		++y;
-	}
-	a = 0;
-	while (a < x)
-	{
-		b = 0;
-		while (b < y)
-		{
-			draw_line(tab[b][a], tab[b + 1][a], fdf);
-			++b;
-		}
-		++a;
-	}
-	return (0);
-}
-
-*/
+	// to handle non rectangular grids would need a table of structures each with line len. not a table of tables...
 
 int		print_grid(t_p2d **tab, t_fdf *fdf)
 {
@@ -55,10 +21,10 @@ int		print_grid(t_p2d **tab, t_fdf *fdf)
 	int		y;
 
 	y = 0;
-	while (y < 10)
+	while (y < fdf->lon)
 	{
 		x = 0;
-		while (x < 9) // 9 ???
+		while (x < fdf->len - 1) // 9 ???
 		{
 			draw_line(tab[y][x], tab[y][x + 1], fdf);
 			++x;
@@ -66,10 +32,10 @@ int		print_grid(t_p2d **tab, t_fdf *fdf)
 		++y;
 	}
 	x = 0;
-	while (x < 10)
+	while (x < fdf->len)
 	{
 		y = 0;
-		while (y < 9)
+		while (y < fdf->lon - 1)
 		{
 			draw_line(tab[y][x], tab[y + 1][x], fdf);
 			++y;
