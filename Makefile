@@ -9,27 +9,17 @@ CFLAGS	=	-Wall -Werror -Wextra
 OTH		=	-framework OpenGL -framework Appkit
 LIBS	=	libft.a -L /usr/local/lib/ -lmlx
 
-SRCS	=	test.c		\
-		=	draw_line.c	\
-		=	toolz_1.c	\
-
-OBJS	=	$(SRCS:%.c=%.o)
+SRCS	=	main.c		\
+			projector.c	\
+			linear_transformations.c	\
 
 
-.PHONY	= all clean fclean re
+.PHONY	= all fclean re
 
-all: $(NAME)
+all:
+	$(CC) -o $(NAME) $(CFLAGS) -I ./inc ./funcs/* ./lib/* $(SRCS) $(OTH)
 
-$(NAME): $(OBJS)
-	$(CC) -o $@ $? $(CFLAGS) $(LIBS) $(OTH)
-
-%.o: %.c
-	$(CC) -o $@ -c $<
-
-clean:
-	rm -f $(OBJS)
-
-fclean: clean
+fclean:
 	rm -f $(NAME)
 
 re: fclean all

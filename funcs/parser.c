@@ -36,31 +36,30 @@ int		read_map(int fd, t_line **lst)		// we don't send fdf here... fine i guess
 	return (1);
 }
 
-t_p3d	**parse_map(int fd, t_fdf *fdf)			// or ret an int.... i do tend to pref that...
+t_f3d	**parse_map(int fd, t_fdf *fdf)			// or ret an int.... i do tend to pref that...
 {
-	t_p3d	**ret;
+	t_f3d	**ret;
 	t_line	*lst;
 	t_line	*tmp;		// find i way to forgo this ???
 	int		x;
 	int		y;
 
-//	printf("parse test1\n");
+
+	fdf->low = 0;
+	fdf->high = 0;
 
 	lst = NULL;
 	ret = NULL;
 	if(!read_map(fd, &lst))	// makes a list of lines each stored as a tab of strings
 		return (0);
-//	printf("parse test1/1\n");
 	fdf->lon = line_list_count(lst);
-//	printf("parse test1/2\n");
-	if (!(ret = (t_p3d **)malloc(sizeof(t_p3d *) * fdf->lon)))
+	if (!(ret = (t_f3d **)malloc(sizeof(t_f3d *) * fdf->lon)))
 		return (0);	// i think the last one can be null for while...
 	y = 0;
 	fdf->len = lst->size;
 	while (lst)	// same as while y < fdf->lon
 	{
-//		printf("parse test2\n");
-		if (!(ret[y] = (t_p3d *)malloc(sizeof(t_p3d) * (fdf->len))))	// no +1 cuz have len
+		if (!(ret[y] = (t_f3d *)malloc(sizeof(t_f3d) * (fdf->len))))	// no +1 cuz have len
 			return (0);
 		x = 0;
 		while (x < fdf->len)
@@ -68,6 +67,13 @@ t_p3d	**parse_map(int fd, t_fdf *fdf)			// or ret an int.... i do tend to pref t
 			ret[y][x].x = x;
 			ret[y][x].y = y;
 			ret[y][x].z = ft_atoi(&lst->tab[y][x]);		// i think....
+			
+			// this shit is so dumb...
+			if (ret[y][x].z > fdf->high)
+				fdf->high = ret[y][x].z;
+			else if (ret[y][x].z < fdf->high)
+				fdf->low = ret[y][x].z;
+			// so dumb...
 			++x;
 		}
 		++y;
@@ -75,7 +81,6 @@ t_p3d	**parse_map(int fd, t_fdf *fdf)			// or ret an int.... i do tend to pref t
 		lst = lst->next;	// also free the tab in lst ???
 		free(tmp);	//since we start with 1st and then done with it.
 	}
-	printf("parse test3\n");
 	return (ret);
 }
 

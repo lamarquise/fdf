@@ -27,17 +27,15 @@
 # include "gnl.h"
 
 
+# define PI 3.14
+
+
 typedef struct	s_line
 {
 	char			**tab;
 	int				size;
 	struct s_line	*next;
 }				t_line;
-
-typedef struct	s_row			// this is why it's so much easoier with a rectangle...
-{
-//	t_p2d		//t_p3d???
-}				t_row;
 
 typedef struct	s_pixel				// basically as fast to send values as it is to send pointer...
 {
@@ -59,6 +57,29 @@ typedef struct	s_p3d				// floats??? how to use only ints in 2D and 3D of whole 
 	int		z;
 }				t_p3d;
 
+typedef struct	s_f3d				// for the transform math cuz it complicated...
+{
+	float	x;
+	float	y;
+	float	z;
+}				t_f3d;
+
+typedef struct	s_p4d
+{
+	int		x;
+	int		y;
+	int		z;
+	int		w;
+}				t_p4d;
+
+typedef struct	s_hom			//homogeneous matrix
+{
+	t_p4d	a;				// nomenclature is clear ???
+	t_p4d	b;
+	t_p4d	c;
+	t_p4d	d;
+}				t_hom;
+
 typedef struct	s_grid
 {
 	t_p2d	**tab;
@@ -70,13 +91,13 @@ typedef struct	s_fdf
 {
 	void	*mlx;
 	void	*wind;
-	int		size;				// to be removed eventually...
+//	int		size;				// to be removed eventually...
 	int		len;		// x max length
 	int		lon;		// y max length
 	int		win_len;
 	int		win_lon;
-
-		
+	int		low;
+	int		high;
 }				t_fdf;
 
 int		draw_line(t_p2d s, t_p2d e, t_fdf *fdf);			// although sending a pointer is cheaper than sending a struct cuz it has to dup the struct on the other side right?
@@ -84,10 +105,18 @@ void	swap_void(void **c1, void **c2);
 int		print_grid(t_p2d **tab, t_fdf *fdf);
 int		line_list_count(t_line *lst);
 int		str_count(char **tab);
-t_p3d	**parse_map(int fd, t_fdf *fdf);
-t_p2d	**project(t_p3d **tab, t_fdf *fdf);
-char            **ft_mysplit(char const *s, char c);
+t_f3d	**parse_map(int fd, t_fdf *fdf);
+t_p2d	**project(t_f3d **tab, t_fdf *fdf);
+int		originate_map(t_f3d **tab, t_fdf *fdf);
+int		apply_t(t_f3d **tab, t_f3d *trans, t_fdf *fdf);
 
+
+/*	Functions that produce the Transformation Tables */
+
+t_f3d	*rot_90_r();
+t_f3d	*rot_90_l();
+
+t_f3d	*push_r();		// no idea if math is cor....
 
 #endif
 
