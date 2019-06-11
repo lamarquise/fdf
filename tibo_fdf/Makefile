@@ -40,7 +40,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 do:
-	gcc $(CFLAGS) src/* -I inc/ ./lib/* 
+	gcc $(CFLAGS) src/* -I inc/ ./lib/* -framework OpenGL -framework Appkit
 
 
 $(NAME): $(OBJ)

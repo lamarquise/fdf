@@ -19,6 +19,8 @@
 
 # define DELIM '\n'
 
+# define BUFF_SIZE 16
+
 typedef struct	s_list
 {
 	void			*content;

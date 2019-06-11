@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include "mlx.h"
-# include "my_new_libft.h"
+# include "libft.h"
 
 
 # define PI 3.14

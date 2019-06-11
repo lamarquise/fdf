@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <unistd.h>
 
 static char	*ft_dellall(char **s1, char **s2)
 {

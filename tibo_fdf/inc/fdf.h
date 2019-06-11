@@ -12,11 +12,15 @@
 
 #ifndef FDF_H
 # define FDF_H
+
 # define MAX_WIN_WIDTH 2400
 # define MAX_WIN_HEIGHT 1300
 # define MIN_WIN_WIDTH 500
 # define MIN_WIN_HEIGHT 500
-# include "my_new_libft.h"
+
+
+# include <unistd.h>
+# include "libft.h"
 # include "mlx.h"
 
 typedef struct	s_coord
@@ -25,7 +29,6 @@ typedef struct	s_coord
 	int		y;
 	int		z;
 }				t_coord;
-
 
 typedef struct	s_fdf
 {
