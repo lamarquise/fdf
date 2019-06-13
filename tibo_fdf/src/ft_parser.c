@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:51:57 by tlamart           #+#    #+#             */
-/*   Updated: 2019/04/26 17:56:47 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/13 11:26:14 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	ft_count(char *line)
 	{
 		while (*line && *line != '\n' && ft_isspace(*line))
 			line += 1;
-		if (*line == '+' || *line == '-' || ft_isdigit(*line))
+		if (*line == '+' || *line == '-' || ft_isdigit(*line))			// doesn't this allocate too much mem ???
 			count++;
 		while (*line && !ft_isspace(*line))
 			line += 1;

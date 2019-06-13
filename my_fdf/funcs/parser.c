@@ -23,7 +23,7 @@ int		read_map(int fd, t_line **lst)		// we don't send fdf here... fine i guess
 		new->next = NULL;					// a hugely helpful line !!!
 		if (!*lst)
 			*lst = new;
-		else
+		else										// could just use lstappend like tibo...
 		{
 			tmp = *lst;
 			while (tmp->next)
@@ -52,14 +52,14 @@ t_f3d	**parse_map(int fd, t_fdf *fdf)			// or ret an int.... i do tend to pref t
 	ret = NULL;
 	if(!read_map(fd, &lst))	// makes a list of lines each stored as a tab of strings
 		return (0);
-	fdf->lon = line_list_count(lst);
+	fdf->lon = line_list_count(lst);		// i suspect a func already exist in lib, could replace...
 	if (!(ret = (t_f3d **)malloc(sizeof(t_f3d *) * fdf->lon)))
 		return (0);	// i think the last one can be null for while...
 	y = 0;
-	fdf->len = lst->size;
+	fdf->len = lst->size;		// assuming it's a rectangle, use the size of first line
 	while (lst)	// same as while y < fdf->lon
 	{
-		if (!(ret[y] = (t_f3d *)malloc(sizeof(t_f3d) * (fdf->len))))	// no +1 cuz have len
+		if (!(ret[y] = (t_f3d *)malloc(sizeof(t_f3d) * (fdf->len))))	// no +1 cuz have len, could do lst->size so  not rectangle
 			return (0);
 		x = 0;
 		while (x < fdf->len)
