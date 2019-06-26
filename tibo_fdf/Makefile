@@ -6,7 +6,7 @@
 #    By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/24 15:44:24 by tlamart           #+#    #+#              #
-#    Updated: 2019/06/13 11:26:09 by erlazo           ###   ########.fr        #
+#    Updated: 2019/06/26 14:50:17 by erlazo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 do:
-	gcc $(CFLAGS) src/* -I inc/ ./lib/* -framework OpenGL -framework Appkit
+	gcc $(CFLAGS) src2/* -I inc/ ./lib/* -framework OpenGL -framework Appkit
 
 
 $(NAME): $(OBJ)

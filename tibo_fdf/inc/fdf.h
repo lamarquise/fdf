@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 00:46:24 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/13 10:18:22 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/26 14:49:06 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ typedef struct	s_fdf
 	int		color;
 	t_list	**list_coord;
 	void	(*projection)(t_coord, t_coord, t_coord*, t_coord*);
+
+	int		r_x;
+	int		r_y;
+	int		r_z;
+
 }				t_fdf;
 
 typedef struct	s_line
@@ -68,7 +73,10 @@ typedef struct	s_key
 char	*ft_getfile(const int fd);
 t_list	*ft_parser(char **file);
 int		ft_initfdf(t_list *lst3d, t_fdf *mlx);
+
 void	ft_getcoord_par(t_coord a, t_coord b, t_coord *a2d, t_coord *b2d);
+void	ft_getcoord_iso(t_coord a, t_coord b, t_coord *a2d, t_coord *b2d);
+
 void	ft_setmap_origin(t_fdf *mlx);
 void	ft_fdf(t_list **list3d);
 void	ft_draw(t_fdf *mlx, t_list *list3d);
@@ -92,7 +100,16 @@ int		ft_color(t_fdf *mlx);
 int		ft_change_projection(t_fdf *mlx);
 
 
-void    ft_positive_diff_dx_greater_than_dy(\
+int		ft_rot_z_left(t_fdf *mlx);
+int		ft_rot_z_right(t_fdf *mlx);
+int		ft_rot_x_left(t_fdf *mlx);
+int		ft_rot_x_right(t_fdf *mlx);
+int		ft_rot_y_left(t_fdf *mlx);
+int		ft_rot_y_right(t_fdf *mlx);
+void	ft_rot_coord(t_fdf *mlx, t_coord *c);
+
+
+void	ft_positive_diff_dx_greater_than_dy(\
 		t_fdf *mlx, t_coord a, t_coord b, t_line err);
 
 void    ft_positive_diff_dy_greater_than_dx(\

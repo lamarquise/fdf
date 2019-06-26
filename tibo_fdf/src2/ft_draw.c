@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:44:02 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/26 12:09:07 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/26 15:11:30 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,19 @@ int		ft_isfit(t_fdf *mlx, t_coord a, t_coord b)
 void	ft_drawline(t_fdf *mlx, t_coord a, t_coord b,\
 		void (*f)(t_coord, t_coord, t_coord*, t_coord*))
 {
+	t_coord		c;
+	t_coord		d;
 	t_coord		a2d;
 	t_coord		b2d;
 
-	ft_scale_coord(mlx, &a, &b);
-	(*f)(a, b, &a2d, &b2d);
+	c = a;
+	d = b;
+
+	ft_rot_coord(mlx, &c);
+	ft_rot_coord(mlx, &d);
+
+	ft_scale_coord(mlx, &c, &d);
+	(*f)(c, d, &a2d, &b2d);
 //	if (b2d.x - a2d.x < 0)
 //		return (ft_drawline(mlx, b, a));
 	if (!(ft_isfit(mlx, a2d, b2d)))

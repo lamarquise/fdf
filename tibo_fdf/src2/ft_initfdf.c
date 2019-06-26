@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:42:23 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/26 13:22:28 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/26 13:45:01 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,13 @@ int			ft_initfdf(t_list *lst3d, t_fdf *mlx)
 	int		status;
 
 	mlx->color = 0x00FF6600;
-	mlx->projection = &ft_getcoord_par;
+	mlx->projection = &ft_getcoord_iso;
 	ft_mapsize(lst3d, mlx);
 	ft_winsize(mlx);
 	ft_setmap_origin(mlx);
 	status = ft_createwin(mlx);
+	mlx->r_x = 0;
+	mlx->r_y = 0;
+	mlx->r_z = 0;
 	return (status);
 }
