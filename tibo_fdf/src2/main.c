@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 18:31:49 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/26 11:51:35 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/27 15:32:14 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int			main(int ac, char **av)
 {
 	int		fd;
 	char	*file;
-	t_list	*list;
+	t_grid	*map;
 
 	if (ac != 2)
 		return (ft_usage("usage: fdf <file>\n"));
@@ -72,12 +72,12 @@ int			main(int ac, char **av)
 		return (ft_error("An error occured during reading the file\n"));
 //	ft_putendl(file);
 //	ft_stop();
-	if (!(list = ft_parser(&file)))
+	if (!(map = ft_parser(&file)))
 		return (ft_error("An error occured during parsing the file\n"));
 //	ft_printf("list len = %d\n", ft_lstlen(list));
 //	ft_stop();
 //	ft_putlst(list);
 //	ft_stop();
-	ft_fdf(&list);
+	ft_fdf(&list);																	 fix
 	return (0);
 }

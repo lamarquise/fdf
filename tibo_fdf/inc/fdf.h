@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 00:46:24 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/26 14:49:06 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/27 15:32:38 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,22 @@ typedef struct	s_line
 	int		y;
 	int		sign;
 }				t_line;
+
+
+typedef struct	s_p3d				// not the most accurate name but whatever
+{
+	int				x;
+	int				y;
+	int				z;
+}				t_p3d;
+
+typedef struct	s_grid
+{
+	t_p3d	*tab;					// first elem of each new list
+	int		size;
+}				t_grid;
+
+
 
 typedef struct	s_key
 {

@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:44:02 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/26 15:11:30 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/27 14:32:12 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,21 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 	size_t	i;
 	t_coord	*coord;
 	t_coord	*coord_next;
+	
+	t_coord tmp;
+
+	mlx->img_data[mlx->map_origin] = mlx->color;
+	mlx->img_data[mlx->map_origin + 1] = mlx->color;
+	mlx->img_data[mlx->map_origin + 1600] = mlx->color;
+	mlx->img_data[mlx->map_origin + 1601] = mlx->color;
+
+
+	tmp.x = -1;
+	tmp.y = -1;
+	tmp.z = 0;
+	coord = (t_coord*)list3d->content;
+
+	ft_drawline(mlx, tmp, *coord, mlx->projection);
 
 	while (list3d)
 	{
@@ -89,7 +104,7 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 		while (i < list3d->content_size)
 		{
 			if (i + 1 < list3d->content_size)
-				ft_drawline(mlx, coord[i], coord[i + 1], mlx->projection);
+				ft_drawline(mlx, coord[i], coord[i + 1], mlx->projection);					// how is this behaving like a table when its a list ???
 			if (list3d->next && i < (list3d->next)->content_size)
 			{
 				coord_next = (t_coord*)(list3d->next)->content;

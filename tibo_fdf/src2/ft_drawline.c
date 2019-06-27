@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 20:02:03 by tlamart           #+#    #+#             */
-/*   Updated: 2019/04/26 18:54:38 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/27 14:13:16 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	ft_positive_diff_dx_greater_than_dy(t_fdf *mlx, t_coord a, t_coord b, t_lin
 //	ft_putstr("00\n");
 	while (a.x <= b.x)
 	{
-		mlx->img_data[mlx->map_origin + a.y * mlx->win_width + a.x] = mlx->color;
-		a.x += 1;
+		mlx->img_data[mlx->map_origin + a.y * mlx->win_width + a.x] = mlx->color;					// these might be the things that have to change 
+		a.x += 1;																					// for rotation to be around center...
 		err.sign += err.x;
 		if (err.sign < 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:51:57 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/13 11:26:14 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/27 15:32:11 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static t_coord	*ft_newtab(char **line, size_t *size_tab)
 
 t_list			*ft_parser(char **file)
 {
+/*
 	t_list	*list;
 	t_list	*new;
 	t_coord	*coord_tab;
@@ -92,4 +93,14 @@ t_list			*ft_parser(char **file)
 	}
 	ft_strdel(file);
 	return (list);
+
+*/
+	
+	t_p3d	**ret;
+	
+
+
+
+
+
 }

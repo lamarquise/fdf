@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:42:23 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/26 13:45:01 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/27 14:24:02 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_mapsize(t_list *list, t_fdf *mlx)
 {
 	mlx->map_width = 0;
 	mlx->map_height = 0;
-	while (list)
+	while (list)																// could do this directly in the parsing, might make things easier...
 	{
 		mlx->map_height += 1;
 		if ((int)list->content_size > mlx->map_width)
@@ -36,6 +36,9 @@ static void	ft_mapsize(t_list *list, t_fdf *mlx)
 //	ft_stop();
 }
 
+
+/*
+
 static void	ft_winsize(t_fdf *mlx)
 {
 	mlx->win_width = 2 * mlx->map_width * mlx->map_scale;
@@ -52,6 +55,11 @@ static void	ft_winsize(t_fdf *mlx)
 //	ft_printf("WINDOW SIZE\n\nwin width = %d, win height = %d\n", mlx->win_width, mlx->win_height);
 //	ft_stop();
 }
+
+*/
+
+
+/*
 
 void		ft_setmap_origin(t_fdf *mlx)
 {
@@ -70,6 +78,9 @@ void		ft_setmap_origin(t_fdf *mlx)
 //	ft_stop();
 }
 
+*/
+
+
 static int	ft_createwin(t_fdf *mlx)
 {
 	if (!(mlx->ptr = mlx_init()))
@@ -81,7 +92,7 @@ static int	ft_createwin(t_fdf *mlx)
 		mlx->ptr, mlx->win_width, mlx->win_height)))
 		return (3);
 	if (!(mlx->img_data = (int*)mlx_get_data_addr(mlx->img_ptr, &mlx->bpp,\
-		&mlx->s_l, &mlx->endian)))
+		&mlx->s_l, &mlx->endian)))											// ok i don't quite get how this works...
 		return (4);
 //	ft_printf("bpp = %d, size line = %d, endian = %d\n", mlx->bpp, mlx->s_l, mlx->endian);
 //	ft_stop();
@@ -93,13 +104,32 @@ int			ft_initfdf(t_list *lst3d, t_fdf *mlx)
 	int		status;
 
 	mlx->color = 0x00FF6600;
-	mlx->projection = &ft_getcoord_iso;
-	ft_mapsize(lst3d, mlx);
-	ft_winsize(mlx);
-	ft_setmap_origin(mlx);
+	mlx->projection = &ft_getcoord_par;
+	ft_mapsize(lst3d, mlx);					// could be done in parsing...
+//	ft_winsize(mlx);
+
+	mlx->win_height = 1000;											// decent window proportions...
+	mlx->win_width = 1600;
+	mlx->last_pix = 1000 * 1600 - 1;
+
+//	ft_setmap_origin(mlx);
+
+	mlx->map_origin = 1600 * 500 + 800;
+
+
+
 	status = ft_createwin(mlx);
+
 	mlx->r_x = 0;
 	mlx->r_y = 0;
 	mlx->r_z = 0;
+
 	return (status);
 }
+
+
+
+
+
+
+
