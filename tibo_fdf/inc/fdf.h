@@ -55,6 +55,8 @@ typedef struct	s_fdf
 	int		r_y;
 	int		r_z;
 
+	t_list	*dim;
+
 }				t_fdf;
 
 typedef struct	s_line
@@ -63,22 +65,6 @@ typedef struct	s_line
 	int		y;
 	int		sign;
 }				t_line;
-
-
-typedef struct	s_p3d				// not the most accurate name but whatever
-{
-	int				x;
-	int				y;
-	int				z;
-}				t_p3d;
-
-typedef struct	s_grid
-{
-	t_p3d	*tab;					// first elem of each new list
-	int		size;
-}				t_grid;
-
-
 
 typedef struct	s_key
 {
@@ -116,13 +102,20 @@ int		ft_color(t_fdf *mlx);
 int		ft_change_projection(t_fdf *mlx);
 
 
+
+
 int		ft_rot_z_left(t_fdf *mlx);
 int		ft_rot_z_right(t_fdf *mlx);
 int		ft_rot_x_left(t_fdf *mlx);
 int		ft_rot_x_right(t_fdf *mlx);
 int		ft_rot_y_left(t_fdf *mlx);
 int		ft_rot_y_right(t_fdf *mlx);
-void	ft_rot_coord(t_fdf *mlx, t_coord *c);
+void	ft_rotcoord(t_fdf *mlx, t_coord *c);
+
+t_list	*ft_copylist(t_list *lst, t_fdf *mlx);
+void	ft_rotmap(t_fdf *mlx, t_list *map);
+
+
 
 
 void	ft_positive_diff_dx_greater_than_dy(\

@@ -50,7 +50,7 @@ int     ft_rot_y_right(t_fdf *mlx)
 	return (ft_redraw(mlx));
 }
 
-void	ft_rot_coord(t_fdf *mlx, t_coord *c)
+void	ft_rotcoord(t_fdf *mlx, t_coord *c)
 {
 	float	tab[6];								// this will undetedly be imprecise, that can be fixed later tho
 	float	mat[9];
@@ -81,5 +81,26 @@ void	ft_rot_coord(t_fdf *mlx, t_coord *c)
 	c->y = tmp.y;
 	c->z = tmp.z;
 }
+
+void	ft_rotmap(t_fdf *mlx, t_list *map)
+{
+	int		i;
+	t_coord	*coord_tab;
+
+	while (map)
+	{
+		i = 0;
+		coord_tab = (t_coord*)map->content;
+		while (i < map->content_size)
+		{
+			ft_rotcoord(mlx, &coord_tab[i]);
+			++i;
+		}
+		map = map->next;
+	}
+}
+
+
+
 
 

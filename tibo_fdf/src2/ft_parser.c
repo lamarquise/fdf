@@ -32,7 +32,7 @@ static size_t	ft_count(char *line)
 
 static t_coord	*ft_filltab(t_coord *coord_tab, char **line)
 {
-	static int	y = 0;
+	static int	y = -1;
 	int			i;
 
 	y++;
@@ -43,8 +43,8 @@ static t_coord	*ft_filltab(t_coord *coord_tab, char **line)
 			*line += 1;
 		if (**line == '-' || **line == '+' || ft_isdigit(**line))
 		{
-			coord_tab[i].x = (i + 1) * 10;			// this way I know
-			coord_tab[i].y = y * 10;				// every coord is
+			coord_tab[i].x = (i) * 4;			// this way I know
+			coord_tab[i].y = y * 4;				// every coord is
 			coord_tab[i].z = ft_atoi(*line) * 2;	// even (div / 2 != 0)
 //			ft_printf("x = %d, y = %d, z = %d\n", i + 1, y, ft_atoi(*line));
 //			ft_stop();
@@ -71,7 +71,6 @@ static t_coord	*ft_newtab(char **line, size_t *size_tab)
 
 t_list			*ft_parser(char **file)
 {
-/*
 	t_list	*list;
 	t_list	*new;
 	t_coord	*coord_tab;
@@ -93,14 +92,4 @@ t_list			*ft_parser(char **file)
 	}
 	ft_strdel(file);
 	return (list);
-
-*/
-	
-	t_p3d	**ret;
-	
-
-
-
-
-
 }

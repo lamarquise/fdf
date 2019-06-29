@@ -60,7 +60,7 @@ int			main(int ac, char **av)
 {
 	int		fd;
 	char	*file;
-	t_grid	*map;
+	t_list	*list;
 
 	if (ac != 2)
 		return (ft_usage("usage: fdf <file>\n"));
@@ -72,12 +72,12 @@ int			main(int ac, char **av)
 		return (ft_error("An error occured during reading the file\n"));
 //	ft_putendl(file);
 //	ft_stop();
-	if (!(map = ft_parser(&file)))
+	if (!(list = ft_parser(&file)))
 		return (ft_error("An error occured during parsing the file\n"));
 //	ft_printf("list len = %d\n", ft_lstlen(list));
 //	ft_stop();
 //	ft_putlst(list);
 //	ft_stop();
-	ft_fdf(&list);																	 fix
+	ft_fdf(&list);
 	return (0);
 }
