@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:51:57 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/30 15:11:18 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/30 16:50:03 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static t_coord	*ft_filltab(t_coord *coord_tab, char **line)
 			*line += 1;
 		if (**line == '-' || **line == '+' || ft_isdigit(**line))
 		{
-			coord_tab[i].x = (i) * 10;			// this way I know
-			coord_tab[i].y = y * 10;				// every coord is
+			coord_tab[i].x = (i) * 5;			// this way I know
+			coord_tab[i].y = y * 5;				// every coord is
 			coord_tab[i].z = ft_atoi(*line) * 2;	// even (div / 2 != 0)
 			i++;
 		}
