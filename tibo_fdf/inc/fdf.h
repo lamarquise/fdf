@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 00:46:24 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/27 15:32:38 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/30 15:35:09 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,9 @@ void	ft_rotcoord(t_fdf *mlx, t_coord *c);
 
 t_list	*ft_copylist(t_list *lst, t_fdf *mlx);
 void	ft_rotmap(t_fdf *mlx, t_list *map);
+
+void	ft_centermap(t_fdf *mlx, t_list *map);
+
 
 
 

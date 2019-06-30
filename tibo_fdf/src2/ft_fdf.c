@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 00:56:10 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/27 14:33:51 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/30 15:23:00 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,14 @@ void		ft_fdf(t_list **list3d)
 {
 	t_fdf	mlx;
 	int		status;
+//	t_list	*copy;
 
 	if ((status = ft_initfdf(*list3d, &mlx)))
 		return (ft_abort(&mlx, list3d, "mlx_init() failed\n"));
+	
+//	copy = ft_copylist(*list3d, &mlx);
+//	ft_centermap(&mlx, copy);
+
 	ft_draw(&mlx, *list3d);
 	mlx_put_image_to_window(mlx.ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
 	mlx.list_coord = list3d;

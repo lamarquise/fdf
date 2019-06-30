@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:42:23 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/27 14:24:02 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/30 15:20:01 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_coord	*ft_refill(t_coord *tab, size_t size)	// soooo inefficient...
 		ret[i].x = tab[i].x;
 		ret[i].y = tab[i].y;
 		ret[i].z = tab[i].z;
+//		printf("x: %i, y: %i, z: %i\n", ret[i].x, ret[i].y, ret[i].z);
 		++i;
 	}
 	return (ret);
@@ -37,28 +38,20 @@ t_list	*ft_copylist(t_list *lst, t_fdf *mlx)
 	t_list	*new;
 	t_coord	*imp;
 
-
-//	printf("test 1\n");
-//printf("first lst content size: %zu\n", lst->content_size);	
+	ret = NULL;
 	while (lst)		// somewhere need to remember to clear imp mem...
 	{
-//		printf("test loop 1\n");
-//		printf("lst content size: %zu\n", lst->content_size);
-		imp = (t_coord*)lst->content;
+		imp = (t_coord*)lst->content;							// better way of doing this???
 		if (!(imp = ft_refill(imp, lst->content_size))\
 			|| !(new = ft_lstcreate((void*)imp, lst->content_size)))
 		{
 			ft_lstdel(&ret, &ft_lstdel_cnt);
 			return (NULL);
 		}
-//		printf("lst content size: %zu\n", lst->content_size);
-//		printf("new content size: %zu\n", new->content_size);	// content size if fine here...
 		// clear imp???
 		ft_lstappend(&ret, new);
 		lst = lst->next;
 	}
-//	printf("test 2\n");
-	printf("ret content size: %zu\n", ret->content_size);
 	return (ret);
 }
 

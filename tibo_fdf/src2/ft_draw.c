@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:44:02 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/27 14:32:12 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/06/30 15:34:59 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,22 +83,17 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 	mlx->img_data[mlx->map_origin + mlx->win_width + 1] = mlx->color;
 	
 
-	copy = ft_copylist(list3d, mlx);
+	copy = ft_copylist(list3d, mlx);		// can secure all this crap too...
 
-	printf("test 1\n");
 
-	printf("lst content size: %zu\n", list3d->content_size);
-//	printf("lst next content size: %zu\n", list3d->next->content_size);
-	printf("copy content size: %zu\n", copy->content_size);
+	ft_centermap(mlx, copy);
+	ft_rotmap(mlx, copy);
 
-//	ft_rotmap(mlx, copy);
-
-	printf("test 2\n");
 	//scale copy here too
 
 
-
-/*	ft_rotmap(mlx, list3d);		// works, but as expected, fucks up the OG
+/*
+	ft_rotmap(mlx, list3d);		// works, but as expected, fucks up the OG
 
 	while (list3d)
 	{
@@ -138,7 +133,5 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 	}
 	// somehow clear copy here...
 	ft_lstdel(&copy, &ft_lstdel_cnt);
-
-
 
 }
