@@ -87,12 +87,17 @@ void	ft_rotmap(t_fdf *mlx, t_list *map)
 	int		i;
 	t_coord	*coord_tab;
 
+	printf("test rot 1\n");
+
 	while (map)
 	{
+		printf("test rot loop 1\n");
+		printf("content size: %zu\n", map->content_size);
 		i = 0;
 		coord_tab = (t_coord*)map->content;
 		while (i < map->content_size)
 		{
+//			printf("test rot loop 2\n");
 			ft_rotcoord(mlx, &coord_tab[i]);
 			++i;
 		}

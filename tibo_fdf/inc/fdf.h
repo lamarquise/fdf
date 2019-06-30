@@ -19,6 +19,8 @@
 # define MIN_WIN_HEIGHT 500
 
 
+# include <stdio.h>			// REMOVE!!!!!!!
+
 # include <unistd.h>
 # include "libft.h"
 # include "mlx.h"

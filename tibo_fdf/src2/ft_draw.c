@@ -85,7 +85,15 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 
 	copy = ft_copylist(list3d, mlx);
 
-	ft_rotmap(mlx, copy);
+	printf("test 1\n");
+
+	printf("lst content size: %zu\n", list3d->content_size);
+//	printf("lst next content size: %zu\n", list3d->next->content_size);
+	printf("copy content size: %zu\n", copy->content_size);
+
+//	ft_rotmap(mlx, copy);
+
+	printf("test 2\n");
 	//scale copy here too
 
 
@@ -129,4 +137,8 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 		copy = copy->next;
 	}
 	// somehow clear copy here...
+	ft_lstdel(&copy, &ft_lstdel_cnt);
+
+
+
 }

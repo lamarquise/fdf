@@ -43,11 +43,9 @@ static t_coord	*ft_filltab(t_coord *coord_tab, char **line)
 			*line += 1;
 		if (**line == '-' || **line == '+' || ft_isdigit(**line))
 		{
-			coord_tab[i].x = (i) * 4;			// this way I know
-			coord_tab[i].y = y * 4;				// every coord is
+			coord_tab[i].x = (i) * 10;			// this way I know
+			coord_tab[i].y = y * 10;				// every coord is
 			coord_tab[i].z = ft_atoi(*line) * 2;	// even (div / 2 != 0)
-//			ft_printf("x = %d, y = %d, z = %d\n", i + 1, y, ft_atoi(*line));
-//			ft_stop();
 			i++;
 		}
 		while (**line && !ft_isspace(**line))

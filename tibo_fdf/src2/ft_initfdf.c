@@ -13,7 +13,6 @@
 #include "fdf.h"
 #include "mlx.h"
 
-
 t_coord	*ft_refill(t_coord *tab, size_t size)	// soooo inefficient...
 {
 	t_coord	*ret;
@@ -34,21 +33,32 @@ t_coord	*ft_refill(t_coord *tab, size_t size)	// soooo inefficient...
 		// this will need some double checking...
 t_list	*ft_copylist(t_list *lst, t_fdf *mlx)
 {
-	t_list	*ret;
+	t_list	*ret;		// initialize ret???
 	t_list	*new;
 	t_coord	*imp;
-	
+
+
+//	printf("test 1\n");
+//printf("first lst content size: %zu\n", lst->content_size);	
 	while (lst)		// somewhere need to remember to clear imp mem...
 	{
-		if (!(imp = ft_refill((t_coord*)lst->content, lst->content_size))\
+//		printf("test loop 1\n");
+//		printf("lst content size: %zu\n", lst->content_size);
+		imp = (t_coord*)lst->content;
+		if (!(imp = ft_refill(imp, lst->content_size))\
 			|| !(new = ft_lstcreate((void*)imp, lst->content_size)))
 		{
 			ft_lstdel(&ret, &ft_lstdel_cnt);
 			return (NULL);
 		}
+//		printf("lst content size: %zu\n", lst->content_size);
+//		printf("new content size: %zu\n", new->content_size);	// content size if fine here...
+		// clear imp???
 		ft_lstappend(&ret, new);
 		lst = lst->next;
 	}
+//	printf("test 2\n");
+	printf("ret content size: %zu\n", ret->content_size);
 	return (ret);
 }
 
