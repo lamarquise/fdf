@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 00:46:24 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/30 16:32:47 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/01 17:36:13 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@
 # define MIN_WIN_WIDTH 500
 # define MIN_WIN_HEIGHT 500
 
+# define PI 3.1415926535897
+
 
 # include <stdio.h>			// REMOVE!!!!!!!
 
+# include <math.h>
 # include <unistd.h>
 # include "libft.h"
 # include "mlx.h"
@@ -57,7 +60,10 @@ typedef struct	s_fdf
 	int		r_y;
 	int		r_z;
 
-	t_list	*dim;
+	int		omx;
+	int		omy;
+
+	int		sealevel;
 
 }				t_fdf;
 
@@ -118,8 +124,8 @@ t_list	*ft_copylist(t_list *lst, t_fdf *mlx);
 void	ft_rotmap(t_fdf *mlx, t_list *map);
 
 void	ft_centermap(t_fdf *mlx, t_list *map);
-
-
+int		ft_raise_sealevel(t_fdf *mlx);
+int		ft_lower_sealevel(t_fdf *mlx);
 
 
 

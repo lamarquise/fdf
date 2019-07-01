@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 18:39:09 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/13 11:26:11 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/01 15:26:28 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ static int	ft_checkbuf(char *str)
 		else if ((*str == '-' || *str == '+') && ft_isdigit(*(str + 1)))
 			str++;
 		else
+		{
+			printf("*str = %c\n", *str);
+			printf("str = %s\n", str);
 			return (0);
+		}
 	}
 	return (1);
 }
@@ -54,12 +58,12 @@ char		*ft_getfile(const int fd)
 	{
 		buf[ret] = '\0';
 		tmp = file;
-		if (!ft_checkbuf(buf))
-			return (ft_dellall(&file, &tmp));
 		file = ft_strjoin(file, buf);
 		ft_strdel(&tmp);
 		if (!file)
 			return (NULL);
 	}
+	if (!ft_checkbuf(buf))
+		return (ft_dellall(&file, &tmp));
 	return (file);
 }

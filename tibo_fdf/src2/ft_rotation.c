@@ -6,14 +6,12 @@
 /*   By: erlazo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 13:23:02 by erlazo            #+#    #+#             */
-/*   Updated: 2019/06/30 16:50:06 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/01 17:24:44 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <math.h>
 
-#define PI 3.14159/180
 
 int		ft_rot_z_left(t_fdf *mlx)
 {
@@ -52,16 +50,16 @@ int     ft_rot_y_right(t_fdf *mlx)
 
 void	ft_rotcoord(t_fdf *mlx, t_coord *c)
 {
-	float	tab[6];								// this will undetedly be imprecise, that can be fixed later tho
-	float	mat[9];
+	double	tab[6];								// this will undoubtedly be imprecise, that can be fixed later tho
+	double	mat[9];
 	t_coord	tmp;
 
-	tab[0] = cos(mlx->r_x * PI);
-	tab[1] = sin(mlx->r_x * PI);
-	tab[2] = cos(mlx->r_y * PI);
-	tab[3] = sin(mlx->r_y * PI);
-	tab[4] = cos(mlx->r_z * PI);
-	tab[5] = sin(mlx->r_z * PI);
+	tab[0] = cos(mlx->r_x * PI / 180);
+	tab[1] = sin(mlx->r_x * PI / 180);
+	tab[2] = cos(mlx->r_y * PI / 180);
+	tab[3] = sin(mlx->r_y * PI / 180);
+	tab[4] = cos(mlx->r_z * PI / 180);
+	tab[5] = sin(mlx->r_z * PI / 180);
 
 	mat[0] = tab[2] * tab[4];
 	mat[1] = -(tab[2]) * tab[5];
@@ -99,8 +97,3 @@ void	ft_rotmap(t_fdf *mlx, t_list *map)
 		map = map->next;
 	}
 }
-
-
-
-
-

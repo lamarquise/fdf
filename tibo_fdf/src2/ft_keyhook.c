@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:58:28 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/26 15:11:32 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/01 17:36:04 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void	ft_init_keytab(t_key *tab)
 	tab[15].f = &ft_rot_y_left;
 	tab[16].keycode = 38;
 	tab[16].f = &ft_rot_y_right;
+
+	tab[17].keycode = 126;
+	tab[17].f = &ft_raise_sealevel;
+	tab[18].keycode = 125;
+	tab[18].f = &ft_lower_sealevel;
 	
 
 }
@@ -78,7 +83,7 @@ int		ft_keyhook(int keycode, void *param)
 	mlx = (t_fdf*)param;
 	if (keytab[0].keycode == 42)
 		ft_init_keytab(keytab);
-	while (i < 17)
+	while (i < 19)
 	{
 		if (keycode == keytab[i].keycode)
 			return (keytab[i].f(mlx));

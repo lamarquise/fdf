@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:44:02 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/30 16:50:14 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/01 17:35:59 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,31 @@ void	ft_getcoord_par(t_coord a, t_coord b, t_coord *a2d, t_coord *b2d)
 	b2d->y = b.y - b.z / 2;	
 }
 
-void	ft_scale_coord(t_fdf *mlx, t_coord *a, t_coord *b)
+void	ft_scale_coord(t_fdf *mlx, t_list *a)
 {
-	a->x *= mlx->map_scale;
-	a->y *= mlx->map_scale;
-	a->z *= mlx->map_altitude;
-	b->x *= mlx->map_scale;
-	b->y *= mlx->map_scale;
-	b->z *= mlx->map_altitude;
+	t_coord *p;
+	int		i;
+
+	while (a)
+	{
+		i = 0;
+		p = (t_coord*)a->content;
+		while (i < a->content_size)
+		{
+			p[i].x *= mlx->map_scale;
+			p[i].y *= mlx->map_scale;
+			p[i].z *= mlx->map_altitude;
+			++i;
+		}
+		a = a->next;
+	}
 }
 
 
 		
 int		ft_isfit(t_fdf *mlx, t_coord a, t_coord b)
 {
+	printf("a.z: %d, b.z: %d\n", a.z, b.z);
 	if (a.y * mlx->win_width + a.x + mlx->map_origin < 0)
 		return (0);
 	else if (a.y * mlx->win_width + a.x + mlx->map_origin > mlx->last_pix)
@@ -42,6 +53,8 @@ int		ft_isfit(t_fdf *mlx, t_coord a, t_coord b)
 	else if (b.y * mlx->win_width + b.x + mlx->map_origin < 0)
 		return (0);
 	else if (b.y * mlx->win_width + b.x + mlx->map_origin > mlx->last_pix)
+		return (0);
+	else if (abs(a.x) > (mlx->win_width / 2) - abs(mlx->omx) || abs(b.x) > (mlx->win_width / 2) - abs(mlx->omx))
 		return (0);
 	else
 		return (1);
@@ -53,16 +66,10 @@ void	ft_drawline(t_fdf *mlx, t_coord a, t_coord b,\
 	t_coord		a2d;
 	t_coord		b2d;
 
-/*	t_coord		c;
-	t_coord		d;
-	
-	c = a;
-	d = b;
-
-	ft_rotcoord(mlx, &c);
-	ft_rotcoord(mlx, &d);
-*/
-	ft_scale_coord(mlx, &a, &b);
+	if (a.z == 0 || b.z == 0)
+		return ;
+//	if (a.z < mlx->sealevel || b.z < mlx->sealevel)
+//		return ;
 	(*f)(a, b, &a2d, &b2d);
 	if (!(ft_isfit(mlx, a2d, b2d)))
 		return ;
@@ -81,15 +88,12 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 	mlx->img_data[mlx->map_origin + 1] = mlx->color;
 	mlx->img_data[mlx->map_origin + mlx->win_width] = mlx->color;
 	mlx->img_data[mlx->map_origin + mlx->win_width + 1] = mlx->color;
-	
 
-	copy = ft_copylist(list3d, mlx);		// can secure all this crap too...
-
-
+	copy = ft_copylist(list3d, mlx);	
 	ft_centermap(mlx, copy);
 	ft_rotmap(mlx, copy);
+	ft_scale_coord(mlx, copy);
 
-	//scale copy here too
 
 
 /*

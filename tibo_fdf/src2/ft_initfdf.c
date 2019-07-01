@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:42:23 by tlamart           #+#    #+#             */
-/*   Updated: 2019/06/30 15:20:01 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/01 17:36:07 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,16 @@ int			ft_initfdf(t_list *lst3d, t_fdf *mlx)
 	mlx->projection = &ft_getcoord_par;
 	ft_mapsize(lst3d, mlx);
 
-	mlx->win_height = 700;
-	mlx->win_width = 1000;
+	mlx->win_height = 1400;
+	mlx->win_width = 2000;
 	mlx->last_pix = mlx->win_width * mlx->win_height - 1;
 
 
 	mlx->map_origin = (mlx->win_width) * (mlx->win_height / 2)\
 	+ mlx->win_width / 2;
-
-
+	mlx->omy = 0;
+	mlx->omx = 0;
+	mlx->sealevel = 0;
 
 	status = ft_createwin(mlx);
 
