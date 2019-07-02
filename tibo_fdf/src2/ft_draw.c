@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:44:02 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/01 17:35:59 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 17:02:40 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_getcoord_par(t_coord a, t_coord b, t_coord *a2d, t_coord *b2d)
 void	ft_scale_coord(t_fdf *mlx, t_list *a)
 {
 	t_coord *p;
-	int		i;
+	size_t	i;
 
 	while (a)
 	{
@@ -52,7 +52,7 @@ int		ft_isfit(t_fdf *mlx, t_coord a, t_coord b)
 		return (0);
 	else if (b.y * mlx->win_width + b.x + mlx->map_origin > mlx->last_pix)
 		return (0);
-	else if (abs(a.x) > (mlx->win_width / 2) - abs(mlx->omx) || abs(b.x) > (mlx->win_width / 2) - abs(mlx->omx))
+	else if (abs(a.x + mlx->omx) + 1 > (mlx->win_width / 2) || abs(b.x + mlx->omx) + 1 > (mlx->win_width / 2))
 		return (0);
 	else
 		return (1);
@@ -89,7 +89,7 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 	mlx->img_data[mlx->map_origin + mlx->win_width] = mlx->color + 100;
 	mlx->img_data[mlx->map_origin - mlx->win_width] = mlx->color + 100;
 
-	copy = ft_copylist(list3d, mlx);	// secure ???
+	copy = ft_copylist(list3d);//, mlx);	// secure ???
 	ft_centermap(mlx, copy);
 	ft_rotmap(mlx, copy);
 	ft_scale_coord(mlx, copy);

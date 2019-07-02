@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:35:40 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/01 13:58:27 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 17:33:07 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@ int		ft_projection_par(t_fdf *mlx)
 	mlx->projection = &ft_getcoord_par;
 	return (ft_redraw(mlx));
 }
+
+int		ft_proj_type(t_fdf *mlx)
+{
+	if (mlx->projection == ft_getcoord_iso)
+		mlx_string_put(mlx->ptr, mlx->win_ptr, 0, 0, mlx->color, "Isometric");
+	else
+		mlx_string_put(mlx->ptr, mlx->win_ptr, 0, 0, mlx->color, "Parallele");
+	return (0);
+}
+
 
 int		ft_change_projection(t_fdf *mlx)
 {

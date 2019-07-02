@@ -6,7 +6,7 @@
 /*   By: erlazo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 15:10:09 by erlazo            #+#    #+#             */
-/*   Updated: 2019/07/01 16:26:22 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 16:58:26 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_centermap(t_fdf *mlx, t_list *map)
 {
-	int		i;
+	size_t	i;
 	int		y;
 	t_coord	*coord_tab;
 

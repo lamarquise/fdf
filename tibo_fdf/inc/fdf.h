@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 00:46:24 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/01 17:36:13 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 17:32:59 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct	s_fdf
 	int		omy;
 
 	int		sealevel;
-	t_list	*og;
 
 }				t_fdf;
 
@@ -109,7 +108,7 @@ int		ft_zoom_in(t_fdf *mlx);
 int		ft_zoom_out(t_fdf *mlx);
 int		ft_color(t_fdf *mlx);
 int		ft_change_projection(t_fdf *mlx);
-
+int		ft_proj_type(t_fdf *mlx);
 
 
 
@@ -124,7 +123,7 @@ void	ft_rotcoord(t_fdf *mlx, t_coord *c);
 void	ft_hooks_loop(t_fdf *mlx);
 
 
-t_list	*ft_copylist(t_list *lst, t_fdf *mlx);
+t_list	*ft_copylist(t_list *lst);//, t_fdf *mlx);
 void	ft_rotmap(t_fdf *mlx, t_list *map);
 
 void	ft_centermap(t_fdf *mlx, t_list *map);

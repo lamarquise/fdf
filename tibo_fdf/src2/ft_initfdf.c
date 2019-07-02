@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:42:23 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/01 17:36:07 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 17:33:03 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_coord	*ft_refill(t_coord *tab, size_t size)	// soooo inefficient...
 	return (ret);
 }
 		// this will need some double checking...
-t_list	*ft_copylist(t_list *lst, t_fdf *mlx)
+t_list	*ft_copylist(t_list *lst)//, t_fdf *mlx)
 {
 	t_list	*ret;		// initialize ret???
 	t_list	*new;
@@ -101,8 +101,7 @@ int			ft_initfdf(t_list *lst3d, t_fdf *mlx)
 {
 	int		status;
 
-	mlx->og = lst3d;
-	mlx->color = 0x00FF6600;
+	mlx->color = 0x00FFFFFF;
 	mlx->projection = &ft_getcoord_par;
 	ft_mapsize(lst3d, mlx);
 

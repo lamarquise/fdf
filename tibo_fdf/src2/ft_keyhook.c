@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:58:28 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/01 17:36:04 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 17:33:09 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	ft_init_keytab(t_key *tab)
 	tab[19].f = ft_zoom_out;
 	tab[20].keycode = 24;
 	tab[20].f = ft_zoom_in;
+	tab[21].keycode = 35;
+	tab[21].f = ft_proj_type;
 
 }
 
@@ -92,7 +94,7 @@ int		ft_keyhook(int keycode, void *param)
 	mlx = (t_fdf*)param;
 	if (keytab[0].keycode == 42)
 		ft_init_keytab(keytab);
-	while (i < 21)
+	while (i < 22)
 	{
 		if (keycode == keytab[i].keycode)
 			return (keytab[i].f(mlx));

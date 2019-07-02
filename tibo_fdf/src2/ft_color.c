@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:42:26 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/01 13:39:30 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 16:30:18 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 int		ft_color(t_fdf *mlx)
 {
-	mlx->color += 0x00000042;
-	mlx->color %= 0x00FFFFFF;
+	static int	color = 0;
+	static int	tab[5] = {0xFFFFFF, 0xFF6600, 0xFF0000, 0x00FF00, 0x0000FF};
+
+	color++;
+	color %= 5;
+	mlx->color = tab[color];
 	return (ft_redraw(mlx));
 }

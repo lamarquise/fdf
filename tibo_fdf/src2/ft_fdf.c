@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 00:56:10 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/01 15:41:07 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 17:00:42 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void		ft_fdf(t_list **list3d)
 	int		status;
 //	t_list	*copy;
 
-	char    str[] = "hi there";
 
 	if ((status = ft_initfdf(*list3d, &mlx)))
 		return (ft_abort(&mlx, list3d, "mlx_init() failed\n"));
@@ -56,13 +55,8 @@ void		ft_fdf(t_list **list3d)
 
 	ft_draw(&mlx, *list3d);
 	mlx_put_image_to_window(mlx.ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
-
-//	mlx_string_put(mlx.ptr, mlx.win_ptr, 0, 0, mlx.color, str);				// works but img is printed infront...
-	
 	mlx.list_coord = list3d;
-	
 	ft_hooks_loop(&mlx);
-	
 //	mlx_key_hook(mlx.win_ptr, &ft_keyhook, &mlx);
 	mlx_loop(mlx.ptr);														// possibly add some things here that Cesar suggested...
 //	mlx_loop_hook(mlx.ptr, mlx_do_key_autorepeaton, mlx.ptr);

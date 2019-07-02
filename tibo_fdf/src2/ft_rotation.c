@@ -6,7 +6,7 @@
 /*   By: erlazo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 13:23:02 by erlazo            #+#    #+#             */
-/*   Updated: 2019/07/01 17:24:44 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 16:58:52 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	ft_rotcoord(t_fdf *mlx, t_coord *c)
 
 void	ft_rotmap(t_fdf *mlx, t_list *map)
 {
-	int		i;
+	size_t	i;
 	t_coord	*coord_tab;
 
 	while (map)
