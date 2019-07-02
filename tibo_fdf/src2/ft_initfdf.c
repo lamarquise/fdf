@@ -26,22 +26,22 @@ t_coord	*ft_refill(t_coord *tab, size_t size)	// soooo inefficient...
 		ret[i].x = tab[i].x;
 		ret[i].y = tab[i].y;
 		ret[i].z = tab[i].z;
-//		printf("x: %i, y: %i, z: %i\n", ret[i].x, ret[i].y, ret[i].z);
+		ret[i].h = tab[i].h;
 		++i;
 	}
 	return (ret);
 }
 		// this will need some double checking...
-t_list	*ft_copylist(t_list *lst)//, t_fdf *mlx)
+t_list	*ft_copylist(t_list *lst)
 {
-	t_list	*ret;		// initialize ret???
+	t_list	*ret;
 	t_list	*new;
 	t_coord	*imp;
 
 	ret = NULL;
-	while (lst)		// somewhere need to remember to clear imp mem...
+	while (lst)		// somewhere need to remember to clear imp mem ???
 	{
-		imp = (t_coord*)lst->content;							// better way of doing this???
+		imp = (t_coord*)lst->content;		// better way of doing this???
 		if (!(imp = ft_refill(imp, lst->content_size))\
 			|| !(new = ft_lstcreate((void*)imp, lst->content_size)))
 		{
@@ -55,29 +55,23 @@ t_list	*ft_copylist(t_list *lst)//, t_fdf *mlx)
 	return (ret);
 }
 
-static void	ft_mapsize(t_list *list, t_fdf *mlx)	// this is v useful
+static void	ft_mapsize(t_list *list, t_fdf *mlx)
 {
 	mlx->map_width = 0;
 	mlx->map_height = 0;
 	while (list)
 	{
 		mlx->map_height += 1;
-		if ((int)list->content_size > mlx->map_width)	// content size is len of line calculated in parser
+		if ((int)list->content_size > mlx->map_width)
 			mlx->map_width = (int)list->content_size;
 		list = list->next;
 	}
-
-		// the x10 also super important for some reason ???
-
 	mlx->map_width *= 10;
 	mlx->map_height *= 10;
-		//map scale is super important for some reason...
 	mlx->map_scale = 1;	
-	while (mlx->map_width * mlx->map_scale * 2 < MIN_WIN_WIDTH \
-		&& mlx->map_height * mlx->map_scale * 2 < MIN_WIN_HEIGHT)
+	while (mlx->map_width * mlx->map_scale  < mlx->win_width - 80 \
+		&& mlx->map_height * mlx->map_scale  < mlx->win_height - 80)
 		mlx->map_scale += 1;
-
-
 	mlx->map_altitude = 1;
 }
 
@@ -103,16 +97,18 @@ int			ft_initfdf(t_list *lst3d, t_fdf *mlx)
 
 	mlx->color = 0x00FFFFFF;
 	mlx->projection = &ft_getcoord_par;
-	ft_mapsize(lst3d, mlx);
 
-	mlx->win_height = 500;
-	mlx->win_width = 700;
+//	mlx->win_height = 500;
+//	mlx->win_width = 700;
+
+	mlx->win_height = 700;
+	mlx->win_width = 1000;
 
 //	mlx->win_height = 1400;
 //	mlx->win_width = 2000;
 	mlx->last_pix = mlx->win_width * mlx->win_height - 1;
 
-
+	ft_mapsize(lst3d, mlx);
 	mlx->map_origin = (mlx->win_width) * (mlx->win_height / 2)\
 	+ mlx->win_width / 2;
 	mlx->omy = 0;

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx.h"
 
 void	ft_getcoord_par(t_coord a, t_coord b, t_coord *a2d, t_coord *b2d)
 {
@@ -43,7 +42,7 @@ void	ft_scale_coord(t_fdf *mlx, t_list *a)
 		
 int		ft_isfit(t_fdf *mlx, t_coord a, t_coord b)
 {
-	printf("a.h: %d, b.h: %d\n", a.h, b.h);
+//	printf("sealevel: %d, a.h: %d, b.h: %d\n", mlx->sealevel, a.z, b.z);
 	if (a.y * mlx->win_width + a.x + mlx->map_origin < 0)
 		return (0);
 	else if (a.y * mlx->win_width + a.x + mlx->map_origin > mlx->last_pix)
@@ -64,11 +63,10 @@ void	ft_drawline(t_fdf *mlx, t_coord a, t_coord b,\
 	t_coord		a2d;
 	t_coord		b2d;
 
-
-	if (a.h < mlx->sealevel || b.h < mlx->sealevel)
-		return ;
 	(*f)(a, b, &a2d, &b2d);
 	if (!(ft_isfit(mlx, a2d, b2d)))
+		return ;
+	if (a.h <= mlx->sealevel || b.h <= mlx->sealevel)
 		return ;
 	ft_bresenham(mlx, a2d, b2d);
 }
@@ -87,7 +85,7 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 	mlx->img_data[mlx->map_origin + mlx->win_width] = mlx->color + 100;
 	mlx->img_data[mlx->map_origin - mlx->win_width] = mlx->color + 100;
 
-	copy = ft_copylist(list3d);//, mlx);	// secure ???
+	copy = ft_copylist(list3d);
 	ft_centermap(mlx, copy);
 	ft_rotmap(mlx, copy);
 	ft_scale_coord(mlx, copy);

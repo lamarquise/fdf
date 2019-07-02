@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx.h"
 
 int		ft_increase_altitude(t_fdf *mlx)
 {
