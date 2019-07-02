@@ -65,6 +65,7 @@ typedef struct	s_fdf
 	int		omy;
 
 	int		sealevel;
+	int		win_type;
 
 }				t_fdf;
 
@@ -110,8 +111,10 @@ int		ft_zoom_out(t_fdf *mlx);
 int		ft_color(t_fdf *mlx);
 int		ft_change_projection(t_fdf *mlx);
 int		ft_proj_type(t_fdf *mlx);
-
-
+//int		ft_mod_winsize(t_fdf *mlx);
+//int		ft_createwin(t_fdf *mlx);
+//void	ft_abort(t_fdf *mlx, t_list **list, char *err_msg);
+void	ft_clear_mlx(t_fdf *mlx);
 
 int		ft_rot_z_left(t_fdf *mlx);
 int		ft_rot_z_right(t_fdf *mlx);

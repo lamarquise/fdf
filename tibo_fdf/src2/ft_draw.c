@@ -78,6 +78,7 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 	t_coord	*coord_next;
 	t_list	*copy;
 
+	
 		// prints the origin...
 	mlx->img_data[mlx->map_origin] = mlx->color + 100;
 	mlx->img_data[mlx->map_origin + 1] = mlx->color + 100;

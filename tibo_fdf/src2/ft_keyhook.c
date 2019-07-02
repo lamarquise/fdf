@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx.h"
 
 int		ft_redraw(t_fdf *mlx)
 {
@@ -81,7 +80,10 @@ void	ft_init_keytab(t_key *tab)
 	tab[20].f = ft_zoom_in;
 	tab[21].keycode = 35;
 	tab[21].f = ft_proj_type;
-
+/*
+	tab[22].keycode = 31;
+	tab[22].f = ft_mod_winsize;
+*/
 }
 
 int		ft_keyhook(int keycode, void *param)

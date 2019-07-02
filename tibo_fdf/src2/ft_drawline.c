@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx.h"
 
 void	ft_positive_diff_dx_greater_than_dy(t_fdf *mlx, t_coord a, t_coord b, t_line err)
 {
@@ -64,8 +63,8 @@ void	ft_negative_diff_dx_greater_than_dy(t_fdf *mlx, t_coord a, t_coord b, t_lin
 void	ft_negative_diff_dy_greater_than_dx(t_fdf *mlx, t_coord a, t_coord b, t_line err)
 {
 //	ft_putstr("33\n");
-//	ft_printf("a.x = %d, a.y = %d\nb.x = %d, b.y = %d\n", a.x, a.y, b.x, b.y);
-//	ft_printf("err.x = %d err.y = %d err.sign = %d\n", err.x, err.y, err.sign);
+	printf("a.x = %d, a.y = %d\nb.x = %d, b.y = %d\n", a.x, a.y, b.x, b.y);
+	printf("err.x = %d err.y = %d err.sign = %d\n", err.x, err.y, err.sign);
 	while (a.y >= b.y)
 	{
 		mlx->img_data[mlx->map_origin + a.y * mlx->win_width + a.x] = mlx->color;

@@ -97,6 +97,7 @@ int			ft_initfdf(t_list *lst3d, t_fdf *mlx)
 
 	mlx->color = 0x00FFFFFF;
 	mlx->projection = &ft_getcoord_par;
+	mlx->win_type = 0;
 
 //	mlx->win_height = 500;
 //	mlx->win_width = 700;

@@ -18,8 +18,6 @@ void		ft_initd(t_line *d, t_coord *a, t_coord *b)
 {
 	d->x = b->x - a->x;
 	d->y = b->y - a->y;
-//	ft_putstr("init dx et dy ok\n\n");
-//	ft_stop();
 }
 
 static void	ft_positive_diff(t_fdf *mlx, t_coord a, t_coord b, t_line d)
