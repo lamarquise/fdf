@@ -64,6 +64,7 @@ typedef struct	s_fdf
 	int		omy;
 
 	int		sealevel;
+	t_list	*og;
 
 }				t_fdf;
 
@@ -120,12 +121,17 @@ int		ft_rot_y_left(t_fdf *mlx);
 int		ft_rot_y_right(t_fdf *mlx);
 void	ft_rotcoord(t_fdf *mlx, t_coord *c);
 
+void	ft_hooks_loop(t_fdf *mlx);
+
+
 t_list	*ft_copylist(t_list *lst, t_fdf *mlx);
 void	ft_rotmap(t_fdf *mlx, t_list *map);
 
 void	ft_centermap(t_fdf *mlx, t_list *map);
 int		ft_raise_sealevel(t_fdf *mlx);
 int		ft_lower_sealevel(t_fdf *mlx);
+
+
 
 
 

@@ -101,12 +101,16 @@ int			ft_initfdf(t_list *lst3d, t_fdf *mlx)
 {
 	int		status;
 
+	mlx->og = lst3d;
 	mlx->color = 0x00FF6600;
 	mlx->projection = &ft_getcoord_par;
 	ft_mapsize(lst3d, mlx);
 
-	mlx->win_height = 1400;
-	mlx->win_width = 2000;
+	mlx->win_height = 500;
+	mlx->win_width = 700;
+
+//	mlx->win_height = 1400;
+//	mlx->win_width = 2000;
 	mlx->last_pix = mlx->win_width * mlx->win_height - 1;
 
 

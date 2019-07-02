@@ -60,11 +60,10 @@ void		ft_fdf(t_list **list3d)
 //	mlx_string_put(mlx.ptr, mlx.win_ptr, 0, 0, mlx.color, str);				// works but img is printed infront...
 	
 	mlx.list_coord = list3d;
-//	mlx_do_key_autorepeaton(mlx.ptr);
 	
+	ft_hooks_loop(&mlx);
 	
-	
-	mlx_key_hook(mlx.win_ptr, &ft_keyhook, &mlx);
+//	mlx_key_hook(mlx.win_ptr, &ft_keyhook, &mlx);
 	mlx_loop(mlx.ptr);														// possibly add some things here that Cesar suggested...
 //	mlx_loop_hook(mlx.ptr, mlx_do_key_autorepeaton, mlx.ptr);
 }

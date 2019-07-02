@@ -26,6 +26,11 @@ int		ft_redraw(t_fdf *mlx)
 	mlx_put_image_to_window(mlx->ptr, mlx->win_ptr, mlx->img_ptr, 0, 0);
 	return (0);
 }
+/*
+void	ft_init_more_keytab(t_key *tab)
+{
+	
+}*/
 
 void	ft_init_keytab(t_key *tab)
 {
@@ -70,6 +75,10 @@ void	ft_init_keytab(t_key *tab)
 	tab[18].keycode = 125;
 	tab[18].f = &ft_lower_sealevel;
 	
+	tab[19].keycode = 27;
+	tab[19].f = ft_zoom_out;
+	tab[20].keycode = 24;
+	tab[20].f = ft_zoom_in;
 
 }
 
@@ -83,11 +92,17 @@ int		ft_keyhook(int keycode, void *param)
 	mlx = (t_fdf*)param;
 	if (keytab[0].keycode == 42)
 		ft_init_keytab(keytab);
-	while (i < 19)
+	while (i < 21)
 	{
 		if (keycode == keytab[i].keycode)
 			return (keytab[i].f(mlx));
 		i++;
 	}
 	return (0);
+}
+
+void    ft_hooks_loop(t_fdf *mlx)
+{
+	mlx_hook(mlx->win_ptr, 2, 0, &ft_keyhook, mlx);
+	mlx_hook(mlx->win_ptr, 17, 0, &ft_quitfdf, mlx);
 }
