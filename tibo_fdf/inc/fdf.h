@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 00:46:24 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/02 17:32:59 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 17:54:19 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_coord
 	int		x;
 	int		y;
 	int		z;
+	int		h;
 }				t_coord;
 
 typedef struct	s_fdf

@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:42:23 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/02 17:33:03 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 17:53:32 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int			ft_initfdf(t_list *lst3d, t_fdf *mlx)
 	+ mlx->win_width / 2;
 	mlx->omy = 0;
 	mlx->omx = 0;
-	mlx->sealevel = 0;
+	mlx->sealevel = -1;
 
 	status = ft_createwin(mlx);
 

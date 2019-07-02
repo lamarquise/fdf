@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:44:02 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/02 17:02:40 by erlazo           ###   ########.fr       */
+/*   Updated: 2019/07/02 17:54:22 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_scale_coord(t_fdf *mlx, t_list *a)
 		
 int		ft_isfit(t_fdf *mlx, t_coord a, t_coord b)
 {
-//	printf("a.z: %d, b.z: %d\n", a.z, b.z);
+	printf("a.h: %d, b.h: %d\n", a.h, b.h);
 	if (a.y * mlx->win_width + a.x + mlx->map_origin < 0)
 		return (0);
 	else if (a.y * mlx->win_width + a.x + mlx->map_origin > mlx->last_pix)
@@ -65,9 +65,7 @@ void	ft_drawline(t_fdf *mlx, t_coord a, t_coord b,\
 	t_coord		b2d;
 
 
-//	if (a.z == 0 || b.z == 0)
-//		return ;
-	if (a.z < mlx->sealevel || b.z < mlx->sealevel)
+	if (a.h < mlx->sealevel || b.h < mlx->sealevel)
 		return ;
 	(*f)(a, b, &a2d, &b2d);
 	if (!(ft_isfit(mlx, a2d, b2d)))
