@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 22:51:57 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/03 08:11:52 by tlamart          ###   ########.fr       */
+/*   Updated: 2019/07/03 18:35:19 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,10 @@ static t_coord	*ft_filltab(t_coord *coord_tab, char **line)
 			*line += 1;
 		if (**line == '-' || **line == '+' || ft_isdigit(**line))
 		{
-<<<<<<< HEAD:src/ft_parser.c
 			coord_tab[i].x = (i) * 2;
 			coord_tab[i].y = y * 2;
 			coord_tab[i].z = ft_atoi(*line) * 2;
-			coord_tab[i].h = ft_atoi(*line) * 2;
-=======
-			coord_tab[i].x = (i) * 2;			// this way I know
-			coord_tab[i].y = y * 2;				// every coord is
-			coord_tab[i].z = ft_atoi(*line) * 2;	// even (div / 2 != 0)
-			coord_tab[i].h = ft_atoi(*line) * 2;
-//			printf("coord_tab[i].h: %d\n", coord_tab[i].h);
->>>>>>> 7284a58473a197e0d976cc58753c80145f72ff82:tibo_fdf/src2/ft_parser.c
+			coord_tab[i].h = coord_tab[i].z;
 			i++;
 		}
 		while (**line && !ft_isspace(**line))

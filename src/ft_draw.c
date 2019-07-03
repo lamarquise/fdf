@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:44:02 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/03 08:27:07 by tlamart          ###   ########.fr       */
+/*   Updated: 2019/07/03 20:32:04 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ void	ft_scale_coord(t_fdf *mlx, t_list *a)
 
 int		ft_isfit(t_fdf *mlx, t_coord a, t_coord b)
 {
-<<<<<<< HEAD:src/ft_draw.c
-=======
-//	printf("sealevel: %d, a.h: %d, b.h: %d\n", mlx->sealevel, a.z, b.z);
->>>>>>> 7284a58473a197e0d976cc58753c80145f72ff82:tibo_fdf/src2/ft_draw.c
 	if (a.y * mlx->win_width + a.x + mlx->map_origin < 0)
 		return (0);
 	else if (a.y * mlx->win_width + a.x + mlx->map_origin > mlx->last_pix)
@@ -81,28 +77,15 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 	t_coord	*coord;
 	t_coord	*coord_next;
 	t_list	*copy;
+	t_list	*to_free;
 
-<<<<<<< HEAD:src/ft_draw.c
 	copy = ft_drawtool(mlx, list3d);
-=======
-	
-		// prints the origin...
-	mlx->img_data[mlx->map_origin] = mlx->color + 100;
-	mlx->img_data[mlx->map_origin + 1] = mlx->color + 100;
-	mlx->img_data[mlx->map_origin - 1] = mlx->color + 100;
-	mlx->img_data[mlx->map_origin + mlx->win_width] = mlx->color + 100;
-	mlx->img_data[mlx->map_origin - mlx->win_width] = mlx->color + 100;
-
-	copy = ft_copylist(list3d);
-	ft_centermap(mlx, copy);
-	ft_rotmap(mlx, copy);
-	ft_scale_coord(mlx, copy);
->>>>>>> 7284a58473a197e0d976cc58753c80145f72ff82:tibo_fdf/src2/ft_draw.c
+	to_free = copy;
 	while (copy)
 	{
-		i = 0;
+		i = -1;
 		coord = (t_coord*)copy->content;
-		while (i < copy->content_size)
+		while (++i < copy->content_size)
 		{
 			if (i + 1 < copy->content_size)
 				ft_drawline(mlx, coord[i], coord[i + 1], mlx->projection);
@@ -111,9 +94,8 @@ void	ft_draw(t_fdf *mlx, t_list *list3d)
 				coord_next = (t_coord*)(copy->next)->content;
 				ft_drawline(mlx, coord[i], coord_next[i], mlx->projection);
 			}
-			i++;
 		}
 		copy = copy->next;
 	}
-	ft_lstdel(&copy, &ft_lstdel_cnt);
+	ft_lstdel(&to_free, &ft_lstdel_cnt);
 }

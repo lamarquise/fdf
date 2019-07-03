@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:42:23 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/03 08:46:01 by tlamart          ###   ########.fr       */
+/*   Updated: 2019/07/03 18:47:24 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,21 @@ t_coord		*ft_refill(t_coord *tab, size_t size)
 	}
 	return (ret);
 }
-<<<<<<< HEAD:src/ft_initfdf.c
 
 t_list		*ft_copylist(t_list *lst)
-=======
-		// this will need some double checking...
-t_list	*ft_copylist(t_list *lst)
->>>>>>> 7284a58473a197e0d976cc58753c80145f72ff82:tibo_fdf/src2/ft_initfdf.c
 {
 	t_list	*ret;
 	t_list	*new;
 	t_coord	*imp;
 
 	ret = NULL;
-<<<<<<< HEAD:src/ft_initfdf.c
 	while (lst)
 	{
 		imp = (t_coord*)lst->content;
-=======
-	while (lst)		// somewhere need to remember to clear imp mem ???
-	{
-		imp = (t_coord*)lst->content;		// better way of doing this???
->>>>>>> 7284a58473a197e0d976cc58753c80145f72ff82:tibo_fdf/src2/ft_initfdf.c
 		if (!(imp = ft_refill(imp, lst->content_size))\
 			|| !(new = ft_lstcreate((void*)imp, lst->content_size)))
 		{
+			ft_memdel((void**)&imp);
 			ft_lstdel(&ret, &ft_lstdel_cnt);
 			return (NULL);
 		}
@@ -78,15 +68,9 @@ static void	ft_mapsize(t_list *list, t_fdf *mlx)
 	}
 	mlx->map_width *= 10;
 	mlx->map_height *= 10;
-<<<<<<< HEAD:src/ft_initfdf.c
 	mlx->map_scale = 1;
 	while (mlx->map_width * mlx->map_scale < mlx->win_width - 80
 		&& mlx->map_height * mlx->map_scale < mlx->win_height - 80)
-=======
-	mlx->map_scale = 1;	
-	while (mlx->map_width * mlx->map_scale  < mlx->win_width - 80 \
-		&& mlx->map_height * mlx->map_scale  < mlx->win_height - 80)
->>>>>>> 7284a58473a197e0d976cc58753c80145f72ff82:tibo_fdf/src2/ft_initfdf.c
 		mlx->map_scale += 1;
 	mlx->map_altitude = 1;
 }
@@ -109,39 +93,19 @@ static int	ft_createwin(t_fdf *mlx)
 
 int			ft_initfdf(t_list *lst3d, t_fdf *mlx)
 {
-	int		status;
-
 	mlx->color = 0x00FFFFFF;
 	mlx->projection = &ft_getcoord_par;
-<<<<<<< HEAD:src/ft_initfdf.c
 	mlx->win_height = 1200;
 	mlx->win_width = 2000;
 	mlx->last_pix = mlx->win_width * mlx->win_height - 1;
 	ft_mapsize(lst3d, mlx);
 	mlx->map_origin = (mlx->win_width) * (mlx->win_height / 2)
-=======
-	mlx->win_type = 0;
-
-//	mlx->win_height = 500;
-//	mlx->win_width = 700;
-
-	mlx->win_height = 700;
-	mlx->win_width = 1000;
-
-//	mlx->win_height = 1400;
-//	mlx->win_width = 2000;
-	mlx->last_pix = mlx->win_width * mlx->win_height - 1;
-
-	ft_mapsize(lst3d, mlx);
-	mlx->map_origin = (mlx->win_width) * (mlx->win_height / 2)\
->>>>>>> 7284a58473a197e0d976cc58753c80145f72ff82:tibo_fdf/src2/ft_initfdf.c
 	+ mlx->win_width / 2;
 	mlx->omy = 0;
 	mlx->omx = 0;
 	mlx->sealevel = -1;
-	status = ft_createwin(mlx);
 	mlx->r_x = 0;
 	mlx->r_y = 0;
 	mlx->r_z = 0;
-	return (status);
+	return (ft_createwin(mlx));
 }

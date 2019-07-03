@@ -50,7 +50,6 @@ void	ft_init_more(t_key *tab)
 	tab[20].f = ft_zoom_in;
 	tab[21].keycode = 35;
 	tab[21].f = ft_proj_type;
-<<<<<<< HEAD:src/ft_keyhook.c
 }
 
 void	ft_init_keytab(t_key *tab)
@@ -78,12 +77,6 @@ void	ft_init_keytab(t_key *tab)
 	tab[10].keycode = 49;
 	tab[10].f = &ft_change_projection;
 	ft_init_more(tab);
-=======
-/*
-	tab[22].keycode = 31;
-	tab[22].f = ft_mod_winsize;
-*/
->>>>>>> 7284a58473a197e0d976cc58753c80145f72ff82:tibo_fdf/src2/ft_keyhook.c
 }
 
 int		ft_keyhook(int keycode, void *param)

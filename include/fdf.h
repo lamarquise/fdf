@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 00:46:24 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/03 08:39:19 by tlamart          ###   ########.fr       */
+/*   Updated: 2019/07/03 20:19:13 by tlamart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct	s_fdf
 	int		map_width;
 	int		map_height;
 	int		map_origin;
-	int		map_scale;
+	double	map_scale;
 	int		map_altitude;
 	int		color;
 	t_list	**list_coord;
@@ -108,7 +108,6 @@ int				ft_rot_x_left(t_fdf *mlx);
 int				ft_rot_x_right(t_fdf *mlx);
 int				ft_rot_y_left(t_fdf *mlx);
 int				ft_rot_y_right(t_fdf *mlx);
-void			ft_rotcoord(t_fdf *mlx, t_coord *c);
 void			ft_hooks_loop(t_fdf *mlx);
 t_list			*ft_copylist(t_list *lst);
 void			ft_rotmap(t_fdf *mlx, t_list *map);
