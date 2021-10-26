@@ -82,6 +82,9 @@ static int	ft_createwin(t_fdf *mlx)
 	if (!(mlx->win_ptr = mlx_new_window(\
 		mlx->ptr, mlx->win_width, mlx->win_height, "fdf")))
 		return (2);
+	if (!(mlx->win_ptr2 = mlx_new_window(\
+		mlx->ptr, mlx->win_width, mlx->win_height, "fdf2")))
+		return (2);
 	if (!(mlx->img_ptr = mlx_new_image(\
 		mlx->ptr, mlx->win_width, mlx->win_height)))
 		return (3);
@@ -95,8 +98,8 @@ int			ft_initfdf(t_list *lst3d, t_fdf *mlx)
 {
 	mlx->color = 0x00FFFFFF;
 	mlx->projection = &ft_getcoord_par;
-	mlx->win_height = 1200;
-	mlx->win_width = 2000;
+	mlx->win_height = 700;
+	mlx->win_width = 600;
 	mlx->last_pix = mlx->win_width * mlx->win_height - 1;
 	ft_mapsize(lst3d, mlx);
 	mlx->map_origin = (mlx->win_width) * (mlx->win_height / 2)

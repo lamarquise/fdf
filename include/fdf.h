@@ -6,7 +6,7 @@
 /*   By: tlamart <tlamart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 00:46:24 by tlamart           #+#    #+#             */
-/*   Updated: 2019/07/03 20:19:13 by tlamart          ###   ########.fr       */
+/*   Updated: 2020/09/26 00:11:46 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_coord
 typedef struct	s_fdf
 {
 	void	*ptr;
+	void	*win_ptr2;
 	void	*win_ptr;
 	int		win_width;
 	int		win_height;

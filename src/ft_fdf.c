@@ -47,6 +47,7 @@ void		ft_fdf(t_list **list3d)
 		return (ft_abort(&mlx, list3d, "mlx_init() failed\n"));
 	ft_draw(&mlx, *list3d);
 	mlx_put_image_to_window(mlx.ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
+	mlx_put_image_to_window(mlx.ptr, mlx.win_ptr2, mlx.img_ptr, 0, 0);
 	mlx.list_coord = list3d;
 	ft_hooks_loop(&mlx);
 	mlx_loop(mlx.ptr);
